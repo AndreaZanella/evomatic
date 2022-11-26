@@ -9,5 +9,6 @@ class User
     private $email;
     private $password;
     private $active;
+    private $favourites = []; //oggetto Product
 }
 ?>
