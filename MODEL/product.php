@@ -54,7 +54,7 @@ class Product
 
     public function getProductAllergens($id) //Ritorna gli allergeni di un prodotto.
     {
-        $query = 'SELECT DISTINCT a.id, a.name FROM ' . $this->table_name . ' p INNER JOIN product_ingredient pi ON p.id = pi.product INNER JOIN ingredient i ON pi.ingredient = i.id INNER JOIN ingredient_allergen ia ON i.id = ia.ingredient INNER JOIN allergen a ON ia.allergen = a.id WHERE p.id = ' . $id . ' ORDER BY a.name';
+        $query = 'SELECT a.id, a.name, a.quantity FROM ' . $this->table_name . ' p INNER JOIN product_allergen pa ON p.id = pa.product INNER JOIN allergen a ON pa.allergen = a.id WHERE p.id = ' . $id . ' ORDER BY a.name';
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
